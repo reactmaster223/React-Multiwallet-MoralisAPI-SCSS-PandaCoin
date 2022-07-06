@@ -45,7 +45,9 @@ function Header() {
     
     const connectWallet = async () => {
       try {
+        handleNavBar()
       const wallets = await onboard.connectWallet()
+      
       } catch (error) {
           setError(error);
         }
@@ -62,14 +64,14 @@ function Header() {
     }
     }
 
-    const handleNavBar =(e)=>{
-      if(e.target.classList.contains('active')){
-        e.target.classList.toggle("active")
+    const handleNavBar =()=>{
+      if(document.getElementsByClassName('header__burger')[0].classList.contains('active')){
+        document.getElementsByClassName('header__burger')[0].classList.toggle("active")
         document.getElementById('mainheader').classList.add("header_right")
       }
       else{
       document.getElementById('mainheader').classList.remove("header_right")
-      e.target.classList.toggle("active")
+      document.getElementsByClassName('header__burger')[0].classList.toggle("active")
       }
     }
     return (
@@ -91,7 +93,7 @@ function Header() {
                                 <li className="connect"><button onClick={() => connectWallet()}>{walletConnectState}</button></li>
                             </ul>
                         </nav>
-                        <div className="header__burger" onClick={(e) => handleNavBar(e)}>
+                        <div className="header__burger" onClick={handleNavBar}>
                             <span></span>
                         </div>
                     </div>
