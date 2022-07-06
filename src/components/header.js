@@ -7,6 +7,7 @@ import ModalBody from 'react-bootstrap/ModalBody'
 import Button from 'react-bootstrap/Button'
 import Onboard from '@web3-onboard/core'
 import injectedModule from '@web3-onboard/injected-wallets'
+import walletConnectModule from '@web3-onboard/walletconnect'
 // import trezorModule from '@web3-onboard/trezor'
 // import ledgerModule from '@web3-onboard/ledger'
 // import walletConnectModule from '@web3-onboard/walletconnect'
@@ -24,7 +25,7 @@ import { providerOptions } from "../utils/providerOptions";
 const MAINNET_RPC_URL = "https://mainnet.infura.io/v3/28337fe6f81d41dcaf891dbba47aaabe"
 const injected = injectedModule()
 // const coinbase = coinbaseModule()
-// const walletConnect = walletConnectModule()
+const walletConnect = walletConnectModule()
 
 // const portis = portisModule({
 //   apiKey: 'b2b7586f-2b1e-4c30-a7fb-c2d1533b153b'
@@ -58,9 +59,11 @@ const injected = injectedModule()
 //   clientId:
 //     'DJuUOKvmNnlzy6ruVgeWYWIMKLRyYtjYa9Y10VCeJzWZcygDlrYLyXsBQjpJ2hxlBO9dnl8t9GmAC2qOP5vnIGo'
 // })
+
 const onboard = Onboard({
   wallets: [
     injected,
+    walletConnect
     // ledger,
     // coinbase,
     // trezor,
