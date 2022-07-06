@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import logo from "../img/logo.png";
+
 function Footer() {
   return (
     <footer className="footer">
@@ -6,7 +8,7 @@ function Footer() {
             <div className="container">
                 <div className="row footer__row1">
                     <div className= "col-6 footer__logo">
-                        <a href="#"><img src="img/logo.png" alt="logo"/></a>
+                        <a href="#"><img src={logo} alt="logo"/></a>
                     </div>
                     <div className="col-6 col-sm-12 col-lg-6 footer__menu">
                         <ul className="d-block d-sm-flex ">

@@ -7,46 +7,111 @@ import ModalBody from 'react-bootstrap/ModalBody'
 import Button from 'react-bootstrap/Button'
 import Onboard from '@web3-onboard/core'
 import injectedModule from '@web3-onboard/injected-wallets'
+// import trezorModule from '@web3-onboard/trezor'
+// import ledgerModule from '@web3-onboard/ledger'
+// import walletConnectModule from '@web3-onboard/walletconnect'
+// import coinbaseModule from '@web3-onboard/coinbase'
+// import portisModule from '@web3-onboard/portis'
+// import magicModule from '@web3-onboard/magic'
+// import fortmaticModule from '@web3-onboard/fortmatic'
+// import torusModule from '@web3-onboard/torus'
+// import keepkeyModule from '@web3-onboard/keepkey'
+// import gnosisModule from '@web3-onboard/gnosis'
+// import web3authModule from '@web3-onboard/web3auth'
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import { providerOptions } from "../utils/providerOptions";
 const MAINNET_RPC_URL = "https://mainnet.infura.io/v3/28337fe6f81d41dcaf891dbba47aaabe"
 const injected = injectedModule()
+// const coinbase = coinbaseModule()
+// const walletConnect = walletConnectModule()
+
+// const portis = portisModule({
+//   apiKey: 'b2b7586f-2b1e-4c30-a7fb-c2d1533b153b'
+// })
+
+// const fortmatic = fortmaticModule({
+//   apiKey: 'pk_test_886ADCAB855632AA'
+// })
+
+// const torus = torusModule()
+// const ledger = ledgerModule()
+// const keepkey = keepkeyModule()
+
+// const gnosis = gnosisModule()
+
+// const trezorOptions = {
+//   email: 'test@test.com',
+//   appUrl: 'https://www.blocknative.com'
+// }
+
+// const trezor = trezorModule(trezorOptions)
+
+// const magic = magicModule({
+//   // Example api key, may need to be updated when max hits reached
+//   // Get one to test with for free from https://magic.link/
+//   apiKey: 'pk_live_02207D744E81C2BA',
+//   userEmail: localStorage.getItem('magicUserEmail')
+// })
+
+// const web3auth = web3authModule({
+//   clientId:
+//     'DJuUOKvmNnlzy6ruVgeWYWIMKLRyYtjYa9Y10VCeJzWZcygDlrYLyXsBQjpJ2hxlBO9dnl8t9GmAC2qOP5vnIGo'
+// })
 const onboard = Onboard({
-  wallets: [injected],
+  wallets: [
+    injected,
+    // ledger,
+    // coinbase,
+    // trezor,
+    // walletConnect,
+    // web3auth,
+    // gnosis,
+    // magic,
+    // fortmatic,
+    // keepkey,
+    // portis,
+    // torus
+  ],
   chains: [
     {
       id: '0x1',
       token: 'ETH',
       label: 'Ethereum Mainnet',
       rpcUrl: MAINNET_RPC_URL
+    },
+    {
+      id: '0x38',
+      token: 'BNB',
+      label: 'BNB Chain',
+      rpcUrl: 'https://bsc-dataseed.binance.org/'
+    },
+    {
+      id: '0x89',
+      token: 'MATIC',
+      label: 'Matic Mainnet',
+      rpcUrl: 'https://matic-mainnet.chainstacklabs.com'
+    },
+    {
+      id: '0xfa',
+      token: 'FTM',
+      label: 'Fantom Mainnet',
+      rpcUrl: 'https://rpc.ftm.tools/'
     }
-  ]
+  ],
+  appMetadata: {
+    name: 'Panda Coin',
+    icon: logo,
+    description: 'My app using Onboard'
+  }
 })
 function Header() {
     const [walletConnectState, setWalletConnectState] = useState('Connect')
-    const [provider, setProvider] = useState();
-    const [library, setLibrary] = useState();
-    const [account, setAccount] = useState();
-    const [network, setNetwork] = useState();
-    const [chainId, setChainId] = useState();
-    const [error, setError] = useState("");
-    const web3Modal = new Web3Modal({
-      cacheProvider: true, // optional
-      providerOptions, // required
-      theme: {
-        background: "#2F5425",
-        main: "rgb(199, 199, 199)",
-        secondary: "rgb(136, 136, 136)",
-        border: "rgba(195, 195, 195, 0.14)",
-        hover: "rgb(16, 26, 32)"
-      }
-    });
     
     const connectWallet = async () => {
       try {
         handleNavBar()
-      const wallets = await onboard.connectWallet()
+        const wallets = await onboard.connectWallet()
       
       } catch (error) {
           setError(error);
