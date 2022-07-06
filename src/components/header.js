@@ -114,7 +114,7 @@ function Header() {
         const wallets = await onboard.connectWallet()
       
       } catch (error) {
-          setError(error);
+          console.log(error);
         }
     }
 
