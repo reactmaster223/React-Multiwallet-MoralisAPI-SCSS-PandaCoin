@@ -50,35 +50,7 @@ function Header() {
           setError(error);
         }
     }
-    // const connectWallet = async () => {
-    //   try {
-    //     const provider = await web3Modal.connect();
-        // console.log(provider)
-        // const library = new ethers.providers.Web3Provider(provider);
-        // const accounts = await library.listAccounts();
-        // const network = await library.getNetwork();
-        // setProvider(provider);
-        // setLibrary(library);
-        // if (accounts) setAccount(accounts[0]);
-        // setChainId(network.chainId);
-    //   } catch (error) {
-    //     setError(error);
-    //   }
-    // };
 
-    // const connectWallet = async () => {
-    //   if (window.ethereum) {
-    //     try {
-    //       const accounts = await ethereum.request({
-    //         method: 'eth_requestAccounts',
-    //         params: [{ eth_accounts: {}}]
-    //       });
-    //       const account = accounts[0];
-    //     } catch (error) {
-    //       setError(error);
-    //     }
-    //   }
-    // };
     useEffect(()=>{
       window.addEventListener("scroll", handleScroll);
     },[])
@@ -91,7 +63,14 @@ function Header() {
     }
 
     const handleNavBar =(e)=>{
-      console.log(e.target)
+      if(e.target.classList.contains('active')){
+        e.target.classList.toggle("active")
+        document.getElementById('mainheader').classList.add("header_right")
+      }
+      else{
+      document.getElementById('mainheader').classList.remove("header_right")
+      e.target.classList.toggle("active")
+      }
     }
     return (
         <header className="header header_right" id='mainheader'>
