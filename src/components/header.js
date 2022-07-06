@@ -25,7 +25,13 @@ import { providerOptions } from "../utils/providerOptions";
 const MAINNET_RPC_URL = "https://mainnet.infura.io/v3/28337fe6f81d41dcaf891dbba47aaabe"
 const injected = injectedModule()
 // const coinbase = coinbaseModule()
-const walletConnect = walletConnectModule()
+const walletConnect = walletConnectModule({
+  bridge: 'https://bridge.walletconnect.org',
+  qrcodeModalOptions: {
+    mobileLinks: ['rainbow', 'metamask', 'argent', 'trust', 'imtoken', 'pillar']
+  },
+  connectFirstChainId: true
+})
 
 // const portis = portisModule({
 //   apiKey: 'b2b7586f-2b1e-4c30-a7fb-c2d1533b153b'
