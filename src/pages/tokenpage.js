@@ -53,7 +53,7 @@ function TokenPage() {
             .then(response => response.json())
             .then(res => {
                 console.log(res)
-                setTokenPrice(res.usdPrice)
+                setTokenPrice(res.usdPrice.toFixed(2))
                 setTokenRate(res.nativePrice.value.slice(0,1) + "." + res.nativePrice.value.slice(1,3))
             });
           }catch(err){
@@ -107,8 +107,9 @@ function TokenPage() {
                     </div>
                     <div className="my__progress">
                         <div className="my__bar"  style={{"width" : `${progress}%`}}>
-                            <p>{progress}%</p>
+                            
                         </div>
+                        <p>{progress}%</p>
                     </div>
                 </div> 
                 <div className="triangle__pre-sale">
@@ -162,8 +163,9 @@ function TokenPage() {
                     </div>
                     <div className="my__progress">
                         <div className="my__bar" style={{"width" : `${progress}%`}}>
-                            <p>{progress}%</p>
+                            
                         </div>
+                        <p>{progress}%</p>
                     </div>
                 </div> 
             </div>

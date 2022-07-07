@@ -32,7 +32,7 @@ const walletConnect = walletConnectModule({
   },
   connectFirstChainId: true
 })
-
+var wallets;
 // const portis = portisModule({
 //   apiKey: 'b2b7586f-2b1e-4c30-a7fb-c2d1533b153b'
 // })
@@ -115,13 +115,15 @@ const onboard = Onboard({
   }
 })
 function Header() {
-    const [walletConnectState, setWalletConnectState] = useState('Connect')
+    const [walletConnectState, setWalletConnectState] = useState('connect')
     
     const connectWallet = async () => {
       try {
         handleNavBar()
         const wallets = await onboard.connectWallet()
-      
+        document.getElementsByTagName("onboard-v2")[0].style.display = "none"
+        setWalletConnectState('connected')
+        console.log(wallets)
       } catch (error) {
           console.log(error);
         }

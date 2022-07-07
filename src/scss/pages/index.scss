@@ -45,6 +45,7 @@ input,textarea,select:focus-visible {
 //   src: url(../fonts/Kanit-Black.ttf);
 //   font-weight: 900;
 // }
+
 :root {
   --color1: #ffffff;
   --color2: #98D431;
@@ -325,11 +326,14 @@ h3 {
   color: var(--color2);
 }
 .connect button {
+  background-color: #214524;
+  color: white;
+  text-transform: uppercase;
   border: 2px solid var(--color2); 
-  padding: 10px 49px;
+  padding: 2px 49px;
   border-radius: 20px;
   margin-right: 80px;
-  margin-left: 80px;
+  margin-left: 20px;
   transition: all ease 555ms;
   @media (max-width: 1280px) {
   margin-right: 10px;
@@ -343,9 +347,7 @@ h3 {
 .connect a:hover {
   color: var(--color2);
 }
-.svelte-kwt38y{
-  display: none!important;
-}
+
 
 /******************************HOME******************************************/
 
@@ -364,7 +366,11 @@ h3 {
 .token__title span {
   color: var(--color2);
 }
+.token__title {
+  text-align: start;
+}
 .token__title p {
+  text-align: start;
   padding-top: 10px;
   padding-bottom: 30px;
 }
@@ -627,6 +633,9 @@ h3 {
   background-color:#214524;
   border-radius: 5px;
 }
+.my__progress p{
+  float: right;
+}
 .my__bar {
   width: 100%;
   height: 8px;
@@ -638,6 +647,7 @@ h3 {
   padding-top: 10px;
 }
 .token__padding {
+  text-align: start;
   padding-bottom: 30px;
 }
 .token__block2 {
@@ -1030,9 +1040,9 @@ input[type=number]::-webkit-inner-spin-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: 768px) {
+  @media (max-width: 570px) {
     margin-bottom: 20px;
-    width: 60%;
+    width: 100%;
     height: 60%;
     margin-left: auto;
     margin-right: auto;
@@ -1061,6 +1071,7 @@ input[type=number]::-webkit-inner-spin-button {
   }
 }
 .text1__row1 p {
+  text-align: start;
   padding-left: 10px;
   font-size: 24px;
   font-weight: 900;
@@ -1089,13 +1100,13 @@ input[type=number]::-webkit-inner-spin-button {
   display: flex;
   align-self: center;
 }
-.tokenomics-block__img object {
+.tokenomics-block__img img {
   transition: all ease 555ms;
   @media (max-width: 991px) {
     width: 70%;
   }
 }
-.tokenomics-block__img object:hover {
+.tokenomics-block__img img:hover {
   opacity: 0.5;
 }
 .tokenomics__content {
@@ -1128,6 +1139,7 @@ input[type=number]::-webkit-inner-spin-button {
   }
 }
 .roadmap__block {
+  text-align: start;
   position: relative;
   padding-left: 30px;
   margin-left: 89px;
@@ -1177,6 +1189,7 @@ input[type=number]::-webkit-inner-spin-button {
   }
 }
 .roadmap__block2 {
+  text-align: start;
   position: relative;
   padding-left: 30px;
   border-left: 2px solid var(--color2);
@@ -1289,6 +1302,9 @@ input[type=number]::-webkit-inner-spin-button {
     padding-top: 40px;
     padding-bottom: 0px;
   }
+}
+.project__block{
+  text-align: start;
 }
 .project-block__image {
   display: flex;
@@ -1438,6 +1454,9 @@ input[type=number]::-webkit-inner-spin-button {
     margin-right: 0;
   }
 }
+.about__content p{
+  text-align: start;
+}
 .image__about-us {
   background: url(../../img/bg4.png)no-repeat;
   background-size: 100% 100%; 
@@ -1464,6 +1483,7 @@ input[type=number]::-webkit-inner-spin-button {
   }
 }
 .form-home__left-col  {
+  text-align: start;
   padding-left: 80px;
   padding-right: 22px; 
   @media (max-width: 991px) {
@@ -1475,7 +1495,11 @@ input[type=number]::-webkit-inner-spin-button {
     padding-right: 20px;  
   }
 }
+.form-home__left-col p{
+  text-align: start;
+}
 .form-home__left-col h5 {
+  text-align: start;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.6;
@@ -1649,6 +1673,7 @@ input[type=number]::-webkit-inner-spin-button {
   }
 }
 .footer__menu ul li a{
+  float: left;
   margin-left: 30px;
   font-family: 'Kanit', sans-serif;
   color: var(--color1);
@@ -1676,6 +1701,7 @@ input[type=number]::-webkit-inner-spin-button {
   color: var(--color2);
 }
 .footer__row2 p {
+  text-align: left;
   font-family: 'Kanit', sans-serif;
   color: var(--color1);
   font-size: 14px;
