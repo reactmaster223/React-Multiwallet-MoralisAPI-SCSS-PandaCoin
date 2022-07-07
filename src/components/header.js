@@ -121,8 +121,9 @@ function Header() {
       try {
         handleNavBar()
         const wallets = await onboard.connectWallet()
+        if(wallets.length > 0){
         document.getElementsByTagName("onboard-v2")[0].style.display = "none"
-        setWalletConnectState('connected')
+        setWalletConnectState('connected')}
         console.log(wallets)
       } catch (error) {
           console.log(error);
