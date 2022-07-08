@@ -35,8 +35,8 @@ function TokenPage() {
         },
         {
             type : "round3",
-            start_date : "3/22/2022",
-            end_data : "7/15/2022",
+            start_date : "7/22/2022",
+            end_data : "8/15/2022",
             amount : "42,000,000,000",
             unit : "0.000001",
         }
@@ -65,7 +65,7 @@ function TokenPage() {
         const res = await web3_handleBuybtn()
         console.log(res)
     }
-    const RoundMapTop = (data)=> {
+    const RoundMapTop = (props)=> {
         const months = [
             'Jan',
             'Feb',
@@ -80,30 +80,32 @@ function TokenPage() {
             'Nov',
             'Dec'
           ]
-        var startDate = new Date(data.data.start_date)
-        var endDate = new Date(data.data.end_data)
+        var startDate = new Date(props.data.start_date)
+        var endDate = new Date(props.data.end_data)
         var progress;
-        if(new Date(data.data.end_data) < new Date())
+        if(new Date(props.data.start_data) > new Date())
+          progress = 0;
+        else if(new Date(props.data.end_data) < new Date())
         progress = 100;
         else {
-            var baserange = new Date(data.data.end_data).getTime() - new Date(data.data.start_date).getTime()
-            var currentrange = new Date().getTime() - new Date(data.data.start_date).getTime()
+            var baserange = new Date(props.data.end_data).getTime() - new Date(props.data.start_date).getTime()
+            var currentrange = new Date().getTime() - new Date(props.data.start_date).getTime()
             progress = Math.round(currentrange / baserange * 100)
         }
         return (
-            <div className="token__row1 cd1">
+            <div className={`token__row1 ${props.styletype}`}>
                 <div className="token__padding">                                      
-                    <div className="token_text d-block d-md-flex">
-                        <p className="text__1">{data.data.type} </p>
+                    <div className="token_text d-sm-flex d-xs-block">
+                        <p className="text__1">{props.data.type} </p>
                         <p className="text__2">{startDate.getDate()} {months[startDate.getMonth()]} {startDate.getFullYear()} – {endDate.getDate()} {months[endDate.getMonth()]} {endDate.getFullYear()}</p>
                     </div>
-                    <div className="token_text d-block d-md-flex">
+                    <div className="token_text d-flex d-xs-block">
                         <p className="text__1">Amount:</p>
-                        <p className="text__2">{data.data.amount}</p>
+                        <p className="text__2">{props.data.amount}</p>
                     </div>
-                    <div className="token_text d-block d-md-flex">
+                    <div className="token_text d-flex d-xs-block">
                         <p className="text__1">Unit:</p>
-                        <p className="text__2">{data.data.unit} BNB</p>
+                        <p className="text__2">{props.data.unit} BNB</p>
                     </div>
                     <div className="my__progress">
                         <div className="my__bar"  style={{"width" : `${progress}%`}}>
@@ -112,13 +114,13 @@ function TokenPage() {
                         <p>{progress}%</p>
                     </div>
                 </div> 
-                <div className="triangle__pre-sale">
+                <div className={props.trianglestyle}>
                     <img src={triangle} alt="triangle"/>
                 </div>
             </div>
         )
     }
-    const RoundMapBottom = (data)=> {
+    const RoundMapBottom = (props)=> {
         const months = [
             'Jan',
             'Feb',
@@ -133,33 +135,36 @@ function TokenPage() {
             'Nov',
             'Dec'
           ]
-        var startDate = new Date(data.data.start_date)
-        var endDate = new Date(data.data.end_data)
+        var startDate = new Date(props.data.start_date)
+        var endDate = new Date(props.data.end_data)
         var progress;
-        if(new Date(data.data.end_data) < new Date())
+        if(new Date(props.data.start_data) > new Date())
+          progress = 0;
+        else if(new Date(props.data.end_data) < new Date())
         progress = 100;
+        
         else {
-            var baserange = new Date(data.data.end_data).getTime() - new Date(data.data.start_date).getTime()
-            var currentrange = new Date().getTime() - new Date(data.data.start_date).getTime()
+            var baserange = new Date(props.data.end_data).getTime() - new Date(props.data.start_date).getTime()
+            var currentrange = new Date().getTime() - new Date(props.data.start_date).getTime()
             progress = Math.round(currentrange / baserange * 100)
         }
         return (
-            <div className="token__row1 cd3">
-                <div className="triangle__round1">
+            <div className={`token__row1 ${props.styletype}`}>
+                <div className={props.trianglestyle}>
                     <img src={triangle2} alt="triangle"/>
                 </div>
                 <div className="token__padding">                                      
-                    <div className="token_text d-block d-md-flex">
-                        <p className="text__1">{data.data.type}</p>
+                    <div className="token_text d-sm-flex d-xs-block">
+                        <p className="text__1">{props.data.type}</p>
                         <p className="text__2">{startDate.getDate()} {months[startDate.getMonth()]} {startDate.getFullYear()} – {endDate.getDate()} {months[endDate.getMonth()]} {endDate.getFullYear()}</p>
                     </div>
-                    <div className="token_text d-block d-md-flex">
+                    <div className="token_text d-flex d-xs-block">
                         <p className="text__1">Amount:</p>
-                        <p className="text__2">{data.data.amount}</p>
+                        <p className="text__2">{props.data.amount}</p>
                     </div>
-                    <div className="token_text d-block d-md-flex">
+                    <div className="token_text d-flex d-xs-block">
                         <p className="text__1">Unit:</p>
-                        <p className="text__2">{data.data.unit} BNB</p>
+                        <p className="text__2">{props.data.unit} BNB</p>
                     </div>
                     <div className="my__progress">
                         <div className="my__bar" style={{"width" : `${progress}%`}}>
@@ -198,8 +203,8 @@ function TokenPage() {
                                     DogeCoin in the number of holders.</p>
                                 </div>
                                 <div className="token__block d-flex">
-                                    <RoundMapTop data = {roundData[0]}/>
-                                    <RoundMapTop data = {roundData[2]}/>
+                                    <RoundMapTop data = {roundData[0]} styletype = "cd1" trianglestyle = "triangle__pre-sale"/>
+                                    <RoundMapTop data = {roundData[2]} styletype = "cd2" trianglestyle = "triangle__round2"/>
                                 </div>
                                 <div className="circle__line d-flex">
                                     <CircleCheck data = {roundData[0]}/>
@@ -211,8 +216,8 @@ function TokenPage() {
                                     <CircleCheck data = {roundData[3]}/>
                                 </div>
                                 <div className="token__block2 d-flex">
-                                    <RoundMapBottom data = {roundData[1]}/>
-                                    <RoundMapBottom data = {roundData[3]}/>
+                                    <RoundMapBottom data = {roundData[1]} styletype = "cd3" trianglestyle = "triangle__round1"/>
+                                    <RoundMapBottom data = {roundData[3]} styletype = "cd4" trianglestyle = "triangle__round3"/>
                                 </div>
                             </div>
                             <div className="col-12 col-lg-5 text-left">

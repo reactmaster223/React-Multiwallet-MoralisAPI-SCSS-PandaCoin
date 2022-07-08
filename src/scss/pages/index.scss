@@ -386,6 +386,11 @@ h3 {
     justify-content: space-around;
   }
 }
+.d-xs-block {
+  @media (max-width: 370px){
+    display: block !important;
+  }
+}
 .text__1 {
   text-transform: uppercase;
   font-weight: 700;
@@ -533,10 +538,13 @@ h3 {
     margin-top: 10px;
     margin-left: 7%; 
   }
-  @media (max-width: 424px) {
+  @media (max-width: 422px) {
+    margin-top: 10px;
+  }
+  @media (max-width: 401px) {
     margin-top: 29px;
   }
-  @media (max-width: 422px) {
+  @media (max-width: 399px) {
     margin-top: 10px;
   }
   @media (max-width: 478px) {
